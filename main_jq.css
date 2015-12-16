@@ -1,0 +1,43 @@
+html {
+  text-align: left;
+
+}
+
+button {
+  padding: 10px 8px;
+  border-radius: 10px;
+  background-color:white;
+  display: inline-block;
+  color: blue;
+  font-weight: bold;
+  outline:none;
+}
+
+p {
+  border: 3px solid black
+  width: 20px;
+  height: 20px;
+}
+
+.myBox {
+   /*border: 3px solid black;*/
+   width: 20%;
+   height: 10%;
+   left: 0px;
+  position: absolute;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+
+}
+
+.myBox.slideright{
+  left: 2200px;
+}
+
+.myBox.slideleft{
+  right: -2000px;
+  transition-timing-function: ease;
+}
+

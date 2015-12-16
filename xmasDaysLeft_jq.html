@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Days left</title>
+	<link rel="stylesheet" type="text/css" href="main_jq.css" />
+  <script type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+<h2>How many days left for Christmas</h2>
+
+  <div> </div>
+<button id="finalDate">Days left</button>
+
+<button id="clearTime">try  again!</button>
+
+<p id="test" class="myBox" >  </p>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+
+    var currentDate = new Date();
+
+    var christmas = new Date('Fri Dec 25 2015 00:00:00');
+
+    var timeDif = Math.abs(christmas.getTime() - currentDate.getTime());
+
+
+    var daysLeft = Math.round(timeDif / 86400000);
+
+
+
+    $('#clearTime').hide();
+
+    $('#finalDate').click(function(){
+        $('#test').html(daysLeft + ' days');
+        $('#clearTime').show();
+        /*growing();*/
+      });
+
+
+    // event binding - clear text
+    $('#clearTime').click(function() {
+      $('#test').html('');
+      $('#clearTime').hide();
+    });
+
+    $('#finalDate').click(function(){
+      var inCreaseFont = 16;
+
+      var myVar = setInterval(function(){
+          $('#test').css('fontSize', inCreaseFont + 'px');
+               /*inCreaseFont++;*/
+               inCreaseFont = inCreaseFont + 13;
+               if(inCreaseFont > 50){
+               // stop growing font
+                    clearTimeout(myVar);
+                    // slide out right
+                     $('#test').addClass('myBox' + " slideright");
+                     setTimeout(function(){
+                        // need to slide back left
+                         $('#test').addClass('myBox' + ' slideleft');
+
+                     }, 2000);
+               }
+       }, 1000);
+
+    });
+
+    $('#finalDate').click(function(){
+
+        var arr = ["#a6ff4d", "#95e545",  "#84cc3d", "#74b235", "#63992e", "#537f26", "#42661e", "#314c17",
+                   "#899F73", "#848F79", "#808080", "#a6ff4d", "#aeff5e","#b7ff70", "#c0ff82", "#c9ff94", "#d2ffa6",
+                   "#dbffb7", "#e4ffc9", "#edffdb", "#f6ffed", "#ffffff","#a6ff4d" ];
+
+        var index = 0;
+
+        // changing color every sec
+            var loopColor = setInterval(function(){
+                   $("body").css('background-color', arr[index]);
+                   index = index + 1;
+                   //if array ends, start all over again
+                   var lastArr = arr[arr.length -1];
+
+                    if(arr[index] === lastArr){
+                      index =  0;
+                    }
+
+            }, 300);
+
+     });
+
+  });
+
+//change color background
+
+
+
+// function finalDate() {
+//   var currentDate = new Date();
+
+//   var christmas = new Date('Fri Dec 25 2015 00:00:00');
+
+//   var timeDif = Math.abs(christmas.getTime() - currentDate.getTime());
+
+
+//   var daysLeft = Math.round(timeDif / 86400000);
+
+//   document.getElementById("test").innerHTML = daysLeft + ' days';
+
+//   growing();
+//   colorChange();
+// 	//console.log(daysLeft);  //  6155819467
+// }
+
+// function clearTime() {
+
+//   document.getElementById("test").innerHTML = '';
+//  }
+
+// //Once i click the days left the font size  will increase every second in 1px font until 50 size font
+
+// var growing = function(){
+
+// 	var inCreaseFont = 16;
+
+
+// 	var myVar = setInterval(function(){
+
+// 		var a = document.getElementById('test');
+
+// 		a.style.fontSize = inCreaseFont + 'px';
+
+//       /*inCreaseFont++;*/
+// 			inCreaseFont = inCreaseFont + 13;
+// 				if(inCreaseFont > 50){
+//           // stop growing font
+// 						clearTimeout(myVar);
+//           // slide out right
+//             a.className = a.className + " slideright";
+//            setTimeout(function(){
+//              // need to slide back left
+//              var a = document.getElementById('test');
+//              a.className = 'myBox' + ' slideleft';
+//            }, 2000);
+// 					}
+
+// 	}, 1000);
+
+// };
+
+// var colorChange = function(){
+
+//   //colors
+//   var arr = ["#a6ff4d", "#95e545",  "#84cc3d", "#74b235", "#63992e", "#537f26", "#42661e", "#314c17", "#899F73", "#848F79", "#808080", "#a6ff4d", "#aeff5e","#b7ff70", "#c0ff82", "#c9ff94", "#d2ffa6", "#dbffb7",
+// "#e4ffc9", "#edffdb", "#f6ffed", "#ffffff","#a6ff4d"
+// ];
+//   var index = 0;
+
+//   // changing color every sec
+//   var loopColor = setInterval(function(){
+//     document.body.style.backgroundColor = arr[index];
+//     index = index + 1;
+//     //if array ends, start all over again
+//     var lastArr = arr[arr.length -1];
+
+//     if(arr[index] === lastArr){
+//       index =  0;
+//     }
+//   }, 300);
+
+
+// };
+//http://www.vijayjoshi.org/2009/04/02/changing-font-size-on-a-page-with-javascript-for-better-user-experience/
+
+//1 sec = 1000 ms
+// 60 sec.= 1 min
+// 60 min.=1h
+// 24 h.=1 day
+// so that means,
+// 3,600 sec= 1 h. and
+// 1 day= 86,400 sec
+
+// 1 day = 86400000 ms
+
+
+
+</script>
+
+</body>
+</html>
+
+<!--
+http://webdesign.tutsplus.com/articles/css3-transitions-and-transforms-from-scratch--webdesign-4975-->
+
+<!--
+http://lea.verou.me/2012/12/animations-with-one-keyframe/-->
+
+<!--
+http://css3.bradshawenterprises.com/transitions/-->
+
+<!-- -->
